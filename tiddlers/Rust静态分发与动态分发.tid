@@ -1,0 +1,128 @@
+created: 20201211065137212
+modified: 20201211070432183
+tags: Rust Generics
+title: Rust静态分发与动态分发
+type: text/vnd.tiddlywiki
+
+[ext[相关链接|https://rustcc.cn/article?id=84006a97-2168-4a93-9bfe-5a34021f00ee]]
+
+一位Java程序员尝试在Rust中实现设计模式：
+
+```rust
+trait Action {
+    fn act(&self);
+}
+
+struct DefaultAction {
+    content: String,
+}
+
+impl Action for DefaultAction {
+    fn act(&self) {
+        println!("do {}", self.content);
+    }
+}
+
+struct User {
+    action: Action,
+}
+
+impl User {
+
+    pub fn user_act(&self) {
+        self.action.act()
+    }
+}
+
+fn main() {
+    let action = DefaultAction {
+        content: "hello Rust".to_string(),
+    };
+    let user = User {
+        action,
+    };
+    user.user_act();
+}
+```
+这段代码无法通过编译
+
+!! 静态分发解决
+
+```rust
+trait Action {
+    fn act(&self);
+}
+
+struct DefaultAction {
+    content: String,
+}
+
+impl Action for DefaultAction {
+    fn act(&self) {
+        println!("do {}", self.content);
+    }
+}
+
+struct User<T> {
+    action: T,
+}
+
+impl<T: Action> User<T> {
+    pub fn user_act(&self) {
+        self.action.act()
+    }
+}
+
+fn test2() {
+    let action = DefaultAction {
+        content: "hello Rust".to_string(),
+    };
+    let user = User {
+        action,
+    };
+    user.user_act();
+}
+```
+
+!! 动态分发解决
+
+```rust
+trait Action {
+    fn act(&self);
+}
+
+struct DefaultAction {
+    content: String,
+}
+
+impl Action for DefaultAction {
+    fn act(&self) {
+        println!("do {}", self.content);
+    }
+}
+
+struct User<'a> {
+    action: &'a dyn Action,
+}
+
+impl<'a> User<'a> {
+    pub fn user_act(&self) {
+        self.action.act()
+    }
+}
+
+fn test2() {
+    let action = DefaultAction {
+        content: "hello Rust".to_string(),
+    };
+    let user = User {
+        action: &action,
+    };
+    user.user_act();
+}
+
+```
+
+''Rust在编译期间必须确定类型，静态分发通过泛型，在编译时为具体类型复制一份实现，动态分发使用指针（Borrow或者Box等智能指针），在运行时再判断具体类型，静态分发耗内存空间，动态分发有运行时开销，影响性能''
+
+时间与空间不可兼得

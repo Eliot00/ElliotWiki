@@ -1,0 +1,20 @@
+created: 20201211064343024
+modified: 20201211065112542
+tags: Python TypedDict TypeHint
+title: Python类型注解TypedDict用法
+type: text/vnd.tiddlywiki
+
+! 基本用法
+```python
+class Point2D(TypedDict):
+    x: int
+    y: int
+    label: str
+
+a: Point2D = {'x': 1, 'y': 2, 'label': 'good'}  # OK
+b: Point2D = {'z': 3, 'label': 'bad'}           # Fails type check
+
+assert Point2D(x=1, y=2, label='first') == dict(x=1, y=2, label='first')
+```
+
+为固定键值对的字典添加类型注解
