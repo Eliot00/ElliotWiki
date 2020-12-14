@@ -1,0 +1,17 @@
+created: 20201214103454718
+modified: 20201214104130607
+tags: Python
+title: Python开发环境配置
+type: text/vnd.tiddlywiki
+
+!! 解释器版本管理工具
+
+* [ext[PythonUp|https://github.com/uranusjr/pythonup-posix]]
+* [ext[pyenv|https://github.com/pyenv/pyenv]]
+
+!! 依赖管理
+
+* 官方pip
+* Python3自带venv or virtualenv创建虚拟环境 + pip
+* [ext[pipenv|https://github.com/pypa/pipenv]]
+* [ext[pdm|https://github.com/frostming/pdm]]
