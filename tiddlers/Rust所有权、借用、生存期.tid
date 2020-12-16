@@ -1,0 +1,25 @@
+created: 20201216082842840
+modified: 20201216092932085
+tags: 
+title: Rust所有权、借用、生存期
+type: text/vnd.tiddlywiki
+
+一段代码体现Ownership、Borrow、Lifetime
+
+```rust
+#[derive(Debug)]
+struct Student {
+    name: String
+}
+
+fn print_student(student: Student) {
+    println!("{:?}", student);
+}
+
+fn main() {
+    let ming = Student { name: String::from("ming") };
+    print_student(ming);
+    let hong = &ming;  // 试着改成let hong = ming;再看报错
+    println!("raw: {:?}, borrow: {:?}", ming, hong);
+}
+```

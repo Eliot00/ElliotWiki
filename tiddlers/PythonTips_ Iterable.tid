@@ -1,0 +1,26 @@
+created: 20201216081241854
+modified: 20201216082746702
+tags: PythonTips
+title: PythonTips: Iterable
+type: text/vnd.tiddlywiki
+
+!! any()
+
+any可以判断一个**Iterable**对象是否为空或所有元素*转成布尔值后都是False*（意味着序列全为空字符串、0等情况也会返回False）
+
+```python
+any([]) # False
+any([0, False, '') # False
+any([0, False, 'a') # True
+```
+
+可以用来简化一些操作：
+
+```python
+if len(list(filter(lambda student: student.age > 18, students))) == 0:
+    pass
+
+// 替换为
+if not any(student for student in students if student.age > 18):
+    pass
+```
