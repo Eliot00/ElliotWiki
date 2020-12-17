@@ -1,0 +1,17 @@
+created: 20201217073424635
+modified: 20201217084544580
+tags: 
+title: SQL中的字符串
+type: text/vnd.tiddlywiki
+
+标准做法使用单引号，部分DB允许双引号，或者隐式转换不包含引号的字符。
+
+```sql
+/* 正确 */
+SELECT * FROM students where name = '张三';
+
+/* 可能报错 */
+SELECT * FROM students where name = "张三";
+SELECT * FROM students where name = 张三;
+
+```

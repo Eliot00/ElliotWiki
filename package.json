@@ -9,6 +9,8 @@
     "tiddlywiki": "^5.1.22"
   },
   "scripts": {
-    "build": "tiddlywiki . --build index"
+    "build": "tiddlywiki . --build index",
+    "start": "tiddlywiki . --listen",
+    "sync": "bash ./sync.sh"
   }
 }
