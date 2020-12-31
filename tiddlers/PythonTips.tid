@@ -1,7 +1,9 @@
 created: 20201216074849379
-modified: 20201216082616530
+modified: 20201231033023705
 tags: Python PythonTips
 title: PythonTips
 type: text/vnd.tiddlywiki
 
 * [[Iterable|PythonTips: Iterable]]
+* [[Python实现不可变值|Python实现不可变值]]
+* [[Python列表去重|Python列表去重]]

@@ -1,0 +1,44 @@
+created: 20201231030129373
+modified: 20201231033015443
+tags: Python PythonTips
+title: Python列表去重
+type: text/vnd.tiddlywiki
+
+!! 利用set去重，不保证顺序
+
+```python
+old_list = [1, 2, 5, 3, 6, 2, 3, 6]
+new_list = list(set(old_list))
+print(new_list)
+
+# [1, 2, 3, 5, 6]
+```
+
+!! dict.fromkeys()方法，保证顺序
+
+```python
+old_list = [1, 2, 5, 3, 6, 2, 3, 6]
+new_list = list(dict.fromkeys(old_list))
+print(new_list)
+
+# [1, 2, 5, 3, 6]
+```
+!! 手写实现，保证顺序，不推荐
+
+```python
+# for循环
+old_list = [1, 2, 5, 3, 6, 2, 3, 6]
+new_list = []
+for i in old_list:
+    if i not in new_list:
+        new_list.append(i)
+print(new_list)
+
+# 列表推导式
+old_list = [1, 2, 5, 3, 6, 2, 3, 6]
+new_list = []
+[new_list.append(i) for i in old_list if i not in new_list]
+print(new_list)
+
+# [1, 2, 5, 3, 6]
+```

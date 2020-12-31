@@ -1,0 +1,25 @@
+created: 20201231030402470
+modified: 20201231031507503
+tags: Python PythonTips
+title: Python实现不可变值
+type: text/vnd.tiddlywiki
+
+!! 使用描述器
+
+```python
+from typing import NoReturn
+
+
+class FrozenValue:
+    def __init__(self, value: int) -> None:
+        self.value = value
+        
+    def __get__(self, instance, owner) -> int:
+        return self.value
+    
+    def __set__(self, obj, val) -> NoReturn:
+        raise AttributeError("Can't reset this")
+    
+class Test:
+    x = FrozenValue(50)
+```
