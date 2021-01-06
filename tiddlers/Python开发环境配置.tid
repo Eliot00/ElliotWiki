@@ -1,5 +1,5 @@
 created: 20201214103454718
-modified: 20201214104130607
+modified: 20210106100620691
 tags: Python
 title: Python开发环境配置
 type: text/vnd.tiddlywiki
@@ -14,4 +14,16 @@ type: text/vnd.tiddlywiki
 * 官方pip
 * Python3自带venv or virtualenv创建虚拟环境 + pip
 * [ext[pipenv|https://github.com/pypa/pipenv]]
+* 安装Python编写的命令行工具，推荐[[pipx|https://github.com/pipxproject/pipx]]
 * [ext[pdm|https://github.com/frostming/pdm]]
+* [[poetry|https://python-poetry.org/docs/]]
+
+后两者根据[[PEP582|https://www.python.org/dev/peps/pep-0582/]]管理依赖，推荐使用pdm
+
+!! 代码规范
+
+* [[pre-commit|https://pre-commit.com/]] + [[black|https://github.com/psf/black]] + [[flake8|https://pypi.org/project/flake8/]]
+
+!! 静态类型检查
+
+* [[Mypy|https://github.com/python/mypy]]

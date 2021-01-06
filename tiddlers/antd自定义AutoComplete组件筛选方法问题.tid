@@ -1,0 +1,23 @@
+created: 20210106071848528
+modified: 20210106082454624
+tags: React [[Ant Design]] JavaScript
+title: antd自定义AutoComplete组件筛选方法问题
+type: text/vnd.tiddlywiki
+
+!! 需求
+
+# 输入框点击显示下拉框，可选择
+# 发生点击选择事件即判定为在原有数据上修改，否则即为新建数据
+# 可搜索
+
+!! 实现
+
+antd的AutoComplete组件，antd版本3.x。dataSource设置为`{ text: item.name, value: item.id }`，监听onSelect事件，选择时更新state写入选择的id值，form设置field为id对应对象的name，避免直接选择没有输入时输入框实际值也变为id，后端根据是否有id值判断是否新建数据。
+
+!! 问题
+
+默认情况下搜索数据根据组件设置的value即id值筛选，自定义filterOption方法，根据inputValue筛选，然而由于组件props中value实际值为id，当输入1-9之间数字，会直接将数字转换为对应id的name值，filterOption方法拿到的inputValue并非实际输入的数字，导致筛选出错。
+
+!! 解决方法
+
+添加`optionLabelProp="value"`属性
