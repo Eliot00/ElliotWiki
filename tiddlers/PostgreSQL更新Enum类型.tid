@@ -1,0 +1,14 @@
+created: 20210121082623001
+modified: 20210121082817353
+tags: PostgreSQL SQL Database
+title: PostgreSQL更新Enum类型
+type: text/vnd.tiddlywiki
+
+PostgreSQL 9.1 introduces ability to ALTER Enum types:
+
+
+```sql
+ALTER TYPE enum_type ADD VALUE 'new_value'; -- appends to list
+ALTER TYPE enum_type ADD VALUE 'new_value' BEFORE 'old_value';
+ALTER TYPE enum_type ADD VALUE 'new_value' AFTER 'old_value';
+```

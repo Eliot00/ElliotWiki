@@ -1,0 +1,7 @@
+created: 20210121060332604
+modified: 20210121062141094
+tags: Vim
+title: Vim数值加减
+type: text/vnd.tiddlywiki
+
+Normal模式下，Ctrl-a数字加一，Ctrl-x数字减一，可使用计数操作，30Ctrl-a在原有数字上加上30
