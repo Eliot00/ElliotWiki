@@ -1,10 +1,10 @@
 created: 20210121082623001
-modified: 20210121082817353
+modified: 20210121100112895
 tags: PostgreSQL SQL Database
 title: PostgreSQL更新Enum类型
 type: text/vnd.tiddlywiki
 
-PostgreSQL 9.1 introduces ability to ALTER Enum types:
+~PostgreSQL 9.1 introduces ability to ALTER Enum types:
 
 
 ```sql
