@@ -1,0 +1,11 @@
+created: 20210126090700710
+modified: 20210126091029735
+tags: Tools shell
+title: Zsh插件
+type: text/vnd.tiddlywiki
+
+!! 必装插件：
+
+* 主题：[[powerlevel10k|https://github.com/romkatv/powerlevel10k]]
+* 高亮：[[zsh-syntax-highlighting|https://github.com/zsh-users/zsh-syntax-highlighting]]
+* 建议提醒：[[zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions]]

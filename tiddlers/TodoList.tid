@@ -1,9 +1,9 @@
 created: 20210121022033415
-modified: 20210121023556312
+modified: 20210126090240321
 tags: $:/tags/SideBar
 title: TodoList
 type: text/vnd.tiddlywiki
 
-<$list filter="Books" variable=prj>
+<$list filter="Books Chores" variable=prj>
 <$macrocall $name=todolist-ui base=<<prj>> caption="""<h2 style="color:darkred;font-weight:lighter;"><<prj>></h2>""" />
 </$list>
