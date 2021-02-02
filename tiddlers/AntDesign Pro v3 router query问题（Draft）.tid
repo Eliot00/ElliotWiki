@@ -1,0 +1,13 @@
+created: 20210202084327880
+modified: 20210202085620805
+tags: 
+title: AntDesign Pro v3 router query问题（Draft）
+type: text/vnd.tiddlywiki
+
+ant pro v3搭建的后台，一个菜单栏下的某个页面，存在多个tab，不同tab页下有不同的table，过去直接将tab的key和table分页放到state，缺点是如果在tab：a，page：3点击跳转到详情页，点击浏览器返回按钮，由于state重置，将回到tab与page的初始值对应页面
+
+一开始在menu.config.js配置路由，陷入误区，想配置类似`order?tab=xx`的路由，但umi无法识别这种格式的path，umi提供的动态路由`order/:tab`无法设置默认值，文档描述也不详细
+
+解决方案：
+
+路由直接配置`/order`，可以直接匹配到`/order?tab=xx`，组件内可以通过`props.location.query`取值，同样跳转可以通过`router.push({pathname: "xx", query: {...}})`设置query，使浏览器保留路由历史记录
