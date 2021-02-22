@@ -1,0 +1,86 @@
+created: 20210222060820633
+modified: 20210222083431528
+tags: Rust WebAssembly
+title: Rust插件系统
+type: text/vnd.tiddlywiki
+
+编译到wasi格式
+
+```rust
+use std::error::Error;
+use wasi_cap_std_sync::WasiCtxBuilder;
+use wasmtime::*;
+use wasmtime_wasi::Wasi;
+
+fn main() -> Result<(), Box<dyn Error>> {
+    let engine = Engine::default();
+    let store = Store::new(&engine);
+
+    let mut linker = Linker::new(&store);
+    let wasi = Wasi::new(
+        &store,
+        WasiCtxBuilder::new()
+            .inherit_stdio()
+            .inherit_args()?
+            .build()?,
+    );
+    wasi.add_to_linker(&mut linker)?;
+
+    let module = Module::from_file(&engine, "./adder/target/wasm32-wasi/debug/adder.wasm")?;
+    let instance = linker.instantiate(&module)?;
+    let adder = instance
+        .get_func("adder")
+        .expect("adder was not an exported function");
+    let adder = adder.get2::<i32, i32, i32>()?;
+    let answer = adder(1, 7)?;
+    println!("the answer is {}", answer);
+    Ok(())
+}
+```
+
+直接运行会报错，错误提示是
+
+```
+Error: wrong number of imports provided, 0 != 4
+```
+
+使用工具将wasm从二进制转到文本格式，发现使用cargo编译到wasi后需要用到4个依赖，这就是为什么会报错。
+
+```
+❯ wasm2wat adder.wasm | grep import
+  (import "wasi_snapshot_preview1" "fd_write" (func $_ZN4wasi13lib_generated22wasi_snapshot_preview18fd_write17ha0aef7cef0a152b0E (type 6)))
+  (import "wasi_snapshot_preview1" "environ_sizes_get" (func $__wasi_environ_sizes_get (type 2)))
+  (import "wasi_snapshot_preview1" "proc_exit" (func $__wasi_proc_exit (type 0)))
+  (import "wasi_snapshot_preview1" "environ_get" (func $__wasi_environ_get (type 2)))
+```
+
+在构建instance时，传入了一个空数组：
+
+```
+let instance = Instance::new(&store, &module, &[])?;
+```
+
+根据文档说法，如果wasm里有用到依赖，调用方要通过这个数组把依赖项传进去，这大概就是错误原因。
+
+根据搜到的[[issue|https://github.com/bytecodealliance/wasmtime/issues/1730]]修改了代码，成功看到结果
+
+如果编译到wasm32-unknown-unknown，可以不需要额外引入
+
+```rust
+use std::error::Error;
+use wasmtime::*;
+
+fn main() -> Result<(), Box<dyn Error>> {
+    let engine = Engine::default();
+    let store = Store::new(&engine);
+    let module = Module::from_file(&engine, "multi.wasm")?;
+    let instance = Instance::new(&store, &module, &[])?;
+    let multi = instance
+        .get_func("multi")
+        .expect("multi was not an exported function");
+    let multi = multi.get2::<i32, i32, i32>()?;
+    let result = multi(2, 4)?;
+    println!("result is {}", result);
+    Ok(())
+}
+```
