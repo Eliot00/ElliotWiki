@@ -1,8 +1,10 @@
 created: 20210222060820633
-modified: 20210222083431528
+modified: 20210223061216806
 tags: Rust WebAssembly
 title: Rust插件系统
 type: text/vnd.tiddlywiki
+
+整理后的文章：[[通过WebAssembly实现插件机制|https://elliot00.com/posts/rust-plugin-with-webassembly]]
 
 编译到wasi格式
 
