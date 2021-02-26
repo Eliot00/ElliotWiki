@@ -1,0 +1,22 @@
+created: 20210226091147700
+modified: 20210226092128991
+tags: Rust
+title: serde_yaml写入yaml文件
+type: text/vnd.tiddlywiki
+
+```rust
+match OpenOptions::new()
+    .write(true)
+    .create_new(true)
+    .open("coco.yml")
+    .map(|file| {
+        serde_yaml::to_writer(
+            file,
+            &ShouldSerializeData
+        )
+        .unwrap()
+    }) {
+    Ok(_) => println!("success created"),
+    Err(e) => println!("coco.yml create faild: {}", e),
+}
+```
