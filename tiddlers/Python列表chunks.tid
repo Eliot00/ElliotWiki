@@ -1,0 +1,13 @@
+created: 20210304040140243
+modified: 20210304040346829
+tags: PythonTips Python
+title: Python列表chunks
+type: text/vnd.tiddlywiki
+
+将列表等距分割
+
+```python
+def chunks(raw_list, n: int):
+    for i in range(0, len(raw_list), n):
+        yield raw_list[i:i+n]
+```
