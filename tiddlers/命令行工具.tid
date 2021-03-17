@@ -1,0 +1,11 @@
+created: 20210317021539781
+modified: 20210317022145771
+tags: Tools
+title: 命令行工具
+type: text/vnd.tiddlywiki
+
+!! 文本
+[[命令行翻译工具traslate-shell|https://github.com/soimort/translate-shell]]
+
+!! 录屏
+[[命令行录制]]
