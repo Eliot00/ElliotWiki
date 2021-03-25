@@ -1,0 +1,7 @@
+created: 20210325060636275
+modified: 20210325060848630
+tags: Rust
+title: Rust程序打包
+type: text/vnd.tiddlywiki
+
+[[cargo-bundle|https://github.com/burtonageo/cargo-bundle]]可以打包Rust GUI程序到对应平台，目前在Mac上打包后app文件无法在低版本Mac环境上运行，原因不明
