@@ -1,0 +1,42 @@
+created: 20210331083446609
+modified: 20210331084941415
+tags: Rust
+title: Rust内部可变性
+type: text/vnd.tiddlywiki
+
+Rust中类型自身不能表示可变性，一个变量是否可变取决于声明时是否有`mut`关键字：
+
+```rust
+struct Foo {
+    test: String,
+    list: Vec<Bar>,
+}
+
+let mut foo = Foo { test: "test".to_string(), list: vec![] };
+```
+
+这里用mut关键字修饰，foo变量可变，foo内部成员也全部可变，如果没有mut修饰，那么foo与其内部成员均不可变，这叫inherited mutability。
+
+某些情况下需要一个不可变变量，但是内部成员可变，于是Rust引入了internal mutability（[[官方文档|https://doc.rust-lang.org/std/cell/index.html]]）。
+
+```rust
+use std::cell::RefCell;
+
+struct Graph {
+    edges: Vec<(i32, i32)>,
+    span_tree_cache: RefCell<Option<Vec<(i32, i32)>>>
+}
+
+impl Graph {
+    fn minimum_spanning_tree(&self) -> Vec<(i32, i32)> {
+        self.span_tree_cache.borrow_mut()
+            .get_or_insert_with(|| self.calc_span_tree())
+            .clone()
+    }
+
+    fn calc_span_tree(&self) -> Vec<(i32, i32)> {
+        // Expensive computation goes here
+        vec![]
+    }
+}
+```
