@@ -1,0 +1,11 @@
+created: 20210413014146994
+modified: 20210413014259934
+tags: Rust
+title: Rust实现观察者模式笔记
+type: text/vnd.tiddlywiki
+
+代码：[[Github|https://github.com/Eliot00/langyan]]
+
+[[Rust内部可变性]]
+
+[[Rust引用计数]]

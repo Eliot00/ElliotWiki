@@ -1,0 +1,21 @@
+created: 20210413013318470
+modified: 20210413014139228
+tags: Rust
+title: Rust引用计数
+type: text/vnd.tiddlywiki
+
+`Rc<T>`是对T类型的引用计数指针：
+
+```rust
+use std::rc::Rc;
+
+let rc = Rc::new(());
+// Method-call syntax
+let rc2 = rc.clone();
+// Fully qualified syntax
+let rc3 = Rc::clone(&rc);
+```
+
+当最后一个Rc指针被drop时，Rc内的T也会被drop。Weak是一个弱引用指针，可以和Rc互相转换。[[官方文档|https://doc.rust-lang.org/std/rc/index.html]]。
+
+在观察者模式中，`Observable`对象的subscribe方法，接受一个`Observer`，内部创建一个Rc并返回，而内部则保存一个通过Rc降级得到的Weak指针，回调时将Weak升级为Rc，当外部的Rc被销毁，内部的Weak将无法再升级回Rc，以此达到取消注册Observer的目的。

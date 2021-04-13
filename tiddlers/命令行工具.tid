@@ -1,5 +1,5 @@
 created: 20210317021539781
-modified: 20210317022145771
+modified: 20210413065755469
 tags: Tools
 title: 命令行工具
 type: text/vnd.tiddlywiki
@@ -9,3 +9,6 @@ type: text/vnd.tiddlywiki
 
 !! 录屏
 [[命令行录制]]
+
+!! 自动化
+[[direnv进入目录前自动运行shell脚本|https://direnv.net/]]
