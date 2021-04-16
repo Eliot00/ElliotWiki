@@ -1,0 +1,58 @@
+created: 20210416084054934
+modified: 20210416085037918
+tags: Python
+title: 尝试使用描述器做类型检查
+type: text/vnd.tiddlywiki
+
+!! 环境
+
+Mac Big Sur
+
+Python 3.9.2
+
+!! 结论
+
+1. `isinstance`无法用在类型注解上，如果要运行时检查需要引入第三方库
+
+2. `Field`描述器使用泛型，可以保证在直接赋值时检查类型，`Model`的`__init__`方法则不会自动推断类型
+
+!! 代码
+
+```python
+from typing import TypeVar, Generic, Optional
+
+T = TypeVar("T")
+
+class Field(Generic[T]):
+    def __init__(self, type_: type[T]):
+        self.type_  = type_
+
+    def __set_name__(self, owenr, name):
+        self.public_name = name
+        self.private_name = '_' + name
+
+    def __get__(self, obj, objtype=None):
+        return getattr(obj, self.private_name, None)
+
+    def __set__(self, obj, value: T):
+        self.validate(value)
+        setattr(obj, self.private_name, value)
+
+    def validate(self, value: T):
+        if not isinstance(value, self.type_):
+            raise ValueError(f'Field {self.public_name} expect to be {self.type_}')
+
+class Model:
+    name = Field(str)
+    age = Field(int)
+    id = Field(Optional[int])
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+student = Model("ming", 12)
+print(student.name, student.id)
+student.id = None
+```
