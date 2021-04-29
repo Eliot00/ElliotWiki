@@ -1,0 +1,14 @@
+created: 20210429021118706
+modified: 20210429021647098
+tags: Vim
+title: Vim缓冲区
+type: text/vnd.tiddlywiki
+
+通过`:ls`打开缓冲区列表，通过`:buffer number`跳转到对应的缓冲区，number是打开缓冲区列表后显示的对应buffer的编号。也可以buffer命令后面加文件名。
+
+便捷跳转命令：
+
+* `:bp` 全名`:bprevious`，上一个缓冲区
+* `:bn` 全名`:bnext`，下一个
+* `:bl` 全名`:blast`，最后的
+* `:bf` 全名`:bfirst`，第一个
