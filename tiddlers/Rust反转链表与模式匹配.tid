@@ -1,0 +1,25 @@
+created: 20210506070614948
+modified: 20210506071346683
+tags: Rust LeetCode
+title: Rust反转链表与模式匹配
+type: text/vnd.tiddlywiki
+
+```rust
+impl Solution {
+    pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        if head.is_none() { return None; }
+
+        let mut prev = None;
+        let mut current = head;
+        while let Some(mut tmp) = current {
+	        let next = tmp.next;
+	        tmp.next = prev;
+	        prev = Some(tmp);
+	        current = next;
+        }
+        prev
+    }
+}
+```
+
+`while let Some(mut tmp) = current`通过模式匹配得到Some内的可变值。
