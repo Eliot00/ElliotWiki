@@ -1,0 +1,11 @@
+created: 20210514075705347
+modified: 20210514082253046
+tags: LSP
+title: LanguageServerProtocol：monaco编辑器
+type: text/vnd.tiddlywiki
+
+monaco与VSCode同源，但是VSCode基于electron。monaco在浏览器环境中，LSP服务需要运行在服务器上。
+
+[[参考链接|https://github.com/Aaaaash/blog/blob/master/article/language-server-protocol.md#web-%E7%AB%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0]]
+
+可以尝试用这个[[crate|https://github.com/qualified/lsp-ws-proxy]]实现到server的~WebSocket代理。
