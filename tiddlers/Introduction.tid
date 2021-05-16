@@ -1,13 +1,18 @@
 color: 
 created: 20201214040050830
-modified: 20201215033718565
+modified: 20210515033949739
 tags: Introduction
 title: Introduction
 type: text/vnd.tiddlywiki
 
-''Hello World''
+!! Hello World
 
-Elliot's personal wiki site
+[[Elliot|https://elliot00.com]]'s personal wiki site.
 
+!! [[Index]]
 
-//''my [[blog|https://elliot00.com]]''//
+<div class="tc-table-of-contents">
+
+<<toc-selective-expandable 'Index'>>
+
+</div>
