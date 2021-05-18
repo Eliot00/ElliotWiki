@@ -1,0 +1,14 @@
+created: 20210518063339155
+modified: 20210518064345594
+tags: Vim
+title: Vim加载相对路径脚本
+type: text/vnd.tiddlywiki
+
+`source`的相对路径是根据当前工作目录来的，但是绝对路径又不利于共享配置，所以在需要导入相对路径脚本时可以用`runtime`或`runtimepath`替换。
+
+Vim中存在一个特殊环境变量`runtimepath`，一般包含`$HOME/.vim`，`$VIM/vimfiles`等目录，在这些目录下的脚本可以直接通过`runtimepath 脚本文件名`来加载，对于有目录结构的脚本，例如在`$HOME/.vim`下有`init.vim`，还有一个`plugins`文件夹，其中存放了若干与插件配置相关的脚本，可以在`init.vim`中这样使用：
+
+```vim
+runtime plugins/a.vim
+runtime plugins/b.vim
+```
