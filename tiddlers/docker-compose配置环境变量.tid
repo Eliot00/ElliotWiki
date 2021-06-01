@@ -1,0 +1,29 @@
+created: 20210601072936492
+modified: 20210601073638890
+tags: Docker Tools
+title: docker-compose配置环境变量
+type: text/vnd.tiddlywiki
+
+直接使用类似dotenv的环境变量文件：
+
+```yaml
+env_file: .env
+
+env_file:
+  - ./common.env
+  - ./apps/web.env
+  - /opt/secrets.env
+```
+
+或者直接使用environment，只给定环境变量的名称会自动获取宿主机上同名的环境变量：
+
+```yaml
+environment:
+  RACK_ENV: development
+  SESSION_SECRET:
+
+environment:
+  - RACK_ENV=development
+  - SESSION_SECRET
+```
+
