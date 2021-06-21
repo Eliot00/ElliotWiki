@@ -1,0 +1,8 @@
+created: 20210621061015930
+modified: 20210621061200452
+tags: Pending
+title: Web框架资料整理
+type: text/vnd.tiddlywiki
+
+Rust+PyO3编写的后端框架：https://github.com/sansyrox/robyn
+warp：基于Filter系统的Rust服务端框架
