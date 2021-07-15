@@ -1,0 +1,14 @@
+created: 20210715083618852
+modified: 20210715084646374
+tags: SQL Pending
+title: NoSQL资料存档
+type: text/vnd.tiddlywiki
+
+* [[自己做了一个轻量级的 NoSQL 数据库|https://www.modb.pro/db/64737]]
+* [[PoloDB|https://github.com/vincentdchan/PoloDB]]
+* [[从零开始写KV数据库：基于哈希索引|https://zhuanlan.zhihu.com/p/351897096]]
+* [[如何从零写一个kv数据库？|https://www.zhihu.com/question/59469744/answer/165590616]]
+* [[How Discord Stores Billions of Messages|https://blog.discord.com/how-discord-stores-billions-of-messages-7fa6ec7ee4c7]]
+* [[Column Store|http://www.cs.umd.edu/~abadi/talks/Column_Store_Tutorial_VLDB09.pdf]]
+* [[理解big table|https://zhuanlan.zhihu.com/p/150266419]]
+* [[mysql分库分表|https://www.cnblogs.com/kissdodog/p/5417912.html]]
