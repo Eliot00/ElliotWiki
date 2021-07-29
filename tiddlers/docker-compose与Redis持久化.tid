@@ -1,0 +1,23 @@
+created: 20210729115410078
+modified: 20210729120313294
+tags: Docker Redis
+title: docker-compose与Redis持久化
+type: text/vnd.tiddlywiki
+
+创建`redis.conf`:
+
+```redis
+appendonly yes
+daemonize no
+```
+
+docker-compose中使用CMD应用redis配置，并配置数据卷：
+
+```yaml
+my_redis:
+  image: redis
+  command: redis-server /usr/local/etc/redis/redis.conf
+  volumes:
+    - ./redis.conf:/usr/local/etc/redis/redis.conf
+    - ./redis_data/:/data/
+```
