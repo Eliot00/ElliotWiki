@@ -1,0 +1,18 @@
+created: 20210803140400258
+modified: 20210803140630151
+tags: Redis Python
+title: Redis incr操作过期问题
+type: text/vnd.tiddlywiki
+
+方法一：
+
+incr操作会自动判断键是否存在，不存在会设置初始值，为了设置过期时间，可以手动get并判断是否为空，如果为空就使用set设值并且设置过期时间，否则直接incr。
+
+```python
+r = aioredis.from_url("redis://localhost")
+count = await r.get(key)
+    if count is not None:
+        await r.incr(key)
+    else:
+        await r.set(key, 1, ex=1000)
+```
