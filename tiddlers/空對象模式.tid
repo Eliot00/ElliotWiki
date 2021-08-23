@@ -1,0 +1,40 @@
+created: 20210823055224757
+modified: 20210823055334578
+tags: DesignPattern
+title: 空對象模式
+type: text/vnd.tiddlywiki
+
+場景：
+
+```python
+def create_book(isbn: str):
+    if validate_isbn(isbn):
+        return Book(isbn)
+    else:
+        raise CreateBookError(f'cannot validate isbn {isbn}')
+```
+
+這樣的函數可以在外部通過`try-catch`捕獲錯誤，但是如果要在外部多次調用這個接口，那麼就會增加錯誤捕獲的成本，可以在這裏嘗試使用**空對象模式**：
+
+```python
+def create_book(isbn: str):
+    if validate_isbn(isbn):
+        return Book(isbn)
+    else:
+        return NullBook(isbn)
+
+# 兩個類實現相同的接口
+class Book:
+    @property
+    def price(self):
+        return self._price
+    
+    
+class NullBook:
+    @property
+    def price(self):
+        return 0
+      
+# 不需要額外的錯誤處理
+price_sum = sum(create_book(isbn).price for isbn in isbn_list)
+```
