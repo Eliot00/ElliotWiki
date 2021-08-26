@@ -1,0 +1,20 @@
+created: 20210826080417505
+modified: 20210826080656605
+tags: Vim
+title: Vim正则表达式中使用变量
+type: text/vnd.tiddlywiki
+
+Vim正则表达式中使用`\(`和`\)`括号(括号要转义)括起来的表达式，在后面可以通过`\1`、`\2`来访问
+
+假设有如下文本：
+
+```
+platform_taobao='xxx'
+platform_wechat='yyy'
+```
+
+需要替换引号内的内容，可以使用如下命令：
+
+```vim
+:%s/platform_\(.*\)='.*'/platform_\1='zzz'/g
+```
