@@ -1,0 +1,23 @@
+created: 20211019034528177
+modified: 20211019034604558
+tags: Python
+title: Python數據類使用技巧
+type: text/vnd.tiddlywiki
+
+在Python中如果一個類屬性是可變對象，所有實例都會共享可變對象的引用，對可變對象的修改會影響到全部實例。`dataclass`禁止直接爲可變對象賦初值，可以通過`field`的`default_factory`解決：
+
+```python
+lasses import dataclass, field
+
+
+@dataclass
+class A:
+    mylist: list[str] = field(default_factory=list)
+
+b = A()
+b.mylist += ['a', 'b', 'c']
+print(b.mylist)
+
+c = A()
+print(c.mylist)
+```
