@@ -1,5 +1,5 @@
 created: 20210826080417505
-modified: 20210826080656605
+modified: 20211105052303211
 tags: Vim
 title: Vim正则表达式中使用变量
 type: text/vnd.tiddlywiki
@@ -18,3 +18,5 @@ platform_wechat='yyy'
 ```vim
 :%s/platform_\(.*\)='.*'/platform_\1='zzz'/g
 ```
+
+另外，Vim文本替換中可以用`&`表示正則匹配的文本：例如`%s/https.*/[](&)/g`將所有鏈接替換成Markdown格式

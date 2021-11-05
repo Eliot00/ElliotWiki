@@ -1,5 +1,5 @@
 created: 20210823055224757
-modified: 20210823055334578
+modified: 20211105052445398
 tags: DesignPattern
 title: 空對象模式
 type: text/vnd.tiddlywiki
@@ -14,7 +14,7 @@ def create_book(isbn: str):
         raise CreateBookError(f'cannot validate isbn {isbn}')
 ```
 
-這樣的函數可以在外部通過`try-catch`捕獲錯誤，但是如果要在外部多次調用這個接口，那麼就會增加錯誤捕獲的成本，可以在這裏嘗試使用**空對象模式**：
+這樣的函數可以在外部通過`try-catch`捕獲錯誤，但是如果要在外部多次調用這個接口，那麼就會增加錯誤捕獲的成本，可以在這裏嘗試使用''空對象模式''：
 
 ```python
 def create_book(isbn: str):

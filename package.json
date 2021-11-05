@@ -1,9 +1,9 @@
 {
-  "name": "myWiki",
+  "name": "ElliotWiki",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:Eliot00/myWiki.git",
-  "author": "Elliot Xu <elliot.xu@coherencedigital.com>",
+  "repository": "git@github.com:Eliot00/ElliotWiki.git",
+  "author": "Elliot <hack00mind@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "tiddlywiki": "^5.1.22"
