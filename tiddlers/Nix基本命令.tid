@@ -1,0 +1,13 @@
+created: 20211108075621234
+modified: 20211108075814939
+tags: Nix NixOS入坑指南
+title: Nix基本命令
+type: text/vnd.tiddlywiki
+
+* 列出已安裝的包：`nix-env -qa`
+* 安裝：`nix-env -i <package>`
+* 卸載：`$ nix-env -e hello`
+* 臨時測試：`nix-shell -p <package>`
+* 同步最新：`nix-channel --update nixpkgs && nix-env -u '*'`
+* 撤銷操作：`nix-env --rollback`
+* 清理：`nix-collect-garbage -d`

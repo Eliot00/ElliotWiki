@@ -1,5 +1,11 @@
 created: 20211105052501080
-modified: 20211105052534171
+modified: 20211108075918038
 tags: Linux NixOS Nix
 title: NixOS入坑指南
 type: text/vnd.tiddlywiki
+
+<div class="tc-table-of-contents">
+
+<<toc-selective-expandable 'NixOS入坑指南'>>
+
+</div>
