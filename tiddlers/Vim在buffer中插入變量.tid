@@ -1,0 +1,9 @@
+created: 20211116024453685
+modified: 20211116025712184
+tags: Vim
+title: Vim在buffer中插入變量
+type: text/vnd.tiddlywiki
+
+利用[[Vim]]的`=`寄存器可以將變量快速寫入正在編輯的buf。例如寫入當前時間，通過`let Date = system('date')`將`date`命令的結果保存到變量`Date`，接下來可以通過命令模式`:put =Date`或插入模式`<Ctrl-R>=Date`將變量寫入到buf中。
+
+簡單地將一個shell命令返回值插入文本中，可以直接利用寄存器，`let @a = system('date')`，通過`"ap`貼出寄存器內容，相比直接用變量按鍵次數較少。要想進一步減少按鍵次數，可以使用匿名寄存器`"`，`let @" = system('date')`，normal模式下直接使用`p`即可貼出內容。
