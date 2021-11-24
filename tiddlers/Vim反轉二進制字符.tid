@@ -1,0 +1,11 @@
+created: 20211124024008797
+modified: 20211124024158730
+tags: Vim
+title: Vim反轉二進制字符
+type: text/vnd.tiddlywiki
+
+反轉二進制數字：`:s/\v(0|1)/\=submatch(0)==0?1:0/g`
+
+* `\v`開啓`very magic`模式，使得`()|`等符號具有特殊含義，`(0|1)`表示匹配0或1。
+* `submatch(n)`只能用在`:substitute`命令或`substitute`函數中，用於返回第n個子匹配項，如果參數n爲0，返回整個匹配的文本。
+* `\=submatch(0)==0?1:0`使用三元表達式的結果作爲要替換的文本，匹配項爲0就返回1，反之返回0。
