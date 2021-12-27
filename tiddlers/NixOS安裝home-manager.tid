@@ -1,0 +1,23 @@
+created: 20211227020754903
+modified: 20211227021126762
+tags: NixOS入坑指南 NixOS Nix
+title: NixOS安裝home-manager
+type: text/vnd.tiddlywiki
+
+!! 添加channel：
+
+```bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-21.11.tar.gz home-manager
+nix-channel --update
+```
+
+!! 之後在`configuration.nix`中添加`imports = [ <home-manager/nixos> ];`，即可使用`home-manager.users`配置項來配置用戶環境：
+
+```nix
+users.users.eve.isNormalUser = true;
+home-manager.users.eve = { pkgs, ... }: {
+  home.packages = [ pkgs.atool pkgs.httpie ];
+  programs.bash.enable = true;
+};
+```
+
