@@ -1,0 +1,31 @@
+created: 20211228093921578
+modified: 20211228094403743
+tags: Nix NixOS入坑指南
+title: Nix打包Rust應用问题
+type: text/vnd.tiddlywiki
+
+!! pkg-config openssl報錯
+
+有些Rust應用依賴`openssl-sys`，這個`crate`又依賴系統的`openssl`，如果出現相關報錯，需要添加：
+
+```nix
+nativeBuildInputs = [ pkg-config ];
+	  
+buildInputs = [ openssl ];
+```
+
+!! Mac專屬問題
+
+在`x86_linux`可以打的包到Mac上編譯失敗，具體系統版本爲`MacOS 11.2.1 (20D74) x86-64bit`
+
+''解決辦法：''
+
+```nix
+buildInputs = [ openssl ] ++ (
+  # 如果是darwin環境，添加以下兩個依賴
+  lib.optional stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+    darwin.apple_sdk.frameworks.CoreServices
+  ]
+);
+```
