@@ -1,0 +1,11 @@
+created: 20220218093515580
+modified: 20220223080351856
+tags: PostgreSQL
+title: psql常用元命令
+type: text/vnd.tiddlywiki
+
+`psql`是`PostgreSQL`官方的命令行前端，除了可以執行SQL語句，`psql`還提供了一種以反斜槓開頭的`meta command`，這些命令通常比較簡短，易於使用。
+
+* 列出所有數據庫：`\l`
+* 切換數據庫：`\c daabase_name`
+* 將數據導出到CSV文件：`\copy (SELECT * FROM table) to '/document/db.csv' with csv`

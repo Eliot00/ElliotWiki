@@ -1,9 +1,0 @@
-created: 20220218093515580
-modified: 20220218094548051
-tags: PostgreSQL
-title: PostgreSQL常用命令
-type: text/vnd.tiddlywiki
-
-* 登入：`psql [-U user]`
-* 列出所有數據庫：`\l`或`SELECT datname FROM pg_database;`
-* 切換數據庫：`\c daabase_name`
