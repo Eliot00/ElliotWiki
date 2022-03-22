@@ -1,0 +1,23 @@
+created: 20220322115153754
+modified: 20220322115629036
+tags: CSS
+title: CSS改变PNG图片颜色
+type: text/vnd.tiddlywiki
+
+CSS滤镜`drop-shadow`:
+
+```css
+drop-shadow(offset-x offset-y blur-radius color)
+```
+
+实现思路：
+
+* 使用`drop-shadow`创建内容的投影
+* 将原有图片偏移，外层div设置`overflow:hide`
+
+```css
+.img {
+    transform: translateX(-100%);
+    filter: drop-shadow(0 0 #000);
+}
+```
