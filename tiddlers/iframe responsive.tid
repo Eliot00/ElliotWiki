@@ -1,0 +1,37 @@
+created: 20220412044328157
+modified: 20220412045817058
+tags: CSS
+title: iframe responsive
+type: text/vnd.tiddlywiki
+
+iframe拥有自已的視口，所以`vh`和`vw`單位不起作用，可以通过一个`position: relative`的父元素來使iframe大小相對於屏幕變化。
+
+''HTML''：
+
+```html
+ <div class="container">
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+</div> 
+```
+
+''CSS'':
+
+```css
+ .container {
+  position: relative;
+  overflow: hidden;
+  width: 80vw;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+```
