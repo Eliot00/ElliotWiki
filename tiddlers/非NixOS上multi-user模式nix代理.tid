@@ -1,0 +1,20 @@
+created: 20220827143119023
+modified: 20220827143909762
+tags: Nix
+title: 非NixOS上multi-user模式nix代理
+type: text/vnd.tiddlywiki
+
+在multi-user模式下，非root用户使用`nix-build`等命令会代理到`nix-daemon`，而nix-daemon不会用到普通用户的环境变量，要想让它使用代理，可以新建`/etc/systemd/system/nix-daemon.service.d/override.conf`，写入如下内容：
+
+```conf
+[Service]
+Environment="HTTP_PROXY=http://proxy.example.com:80"
+Environment="HTTPS_PROXY=https://proxy.example.com:443"
+```
+
+之后重启daemon：
+
+```shell
+ $ sudo systemctl daemon-reload
+ $ sudo systemctl restart nix-daemon
+```
