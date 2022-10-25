@@ -1,0 +1,10 @@
+created: 20221025022627007
+modified: 20221025023919857
+tags: Vim
+title: Vim技巧：跳转
+type: text/vnd.tiddlywiki
+
+[[Vim]]
+
+* `g;`: 跳转到上一个更改处
+* `g,`: 跳转到下一个更改处

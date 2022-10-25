@@ -1,0 +1,9 @@
+created: 20221025023320767
+modified: 20221025023641928
+tags: Vim
+title: Vim技巧：重复性
+type: text/vnd.tiddlywiki
+
+[[Vim]]
+
+* `gv`: 重新选中上次visual模式下的选择
