@@ -1,0 +1,10 @@
+created: 20230224053653934
+modified: 20230224054426087
+tags: Nix NixOS入坑指南
+title: 从nix-env迁移到nix profile
+type: text/vnd.tiddlywiki
+
+!! 一些常用操作的替代：
+
+* 安装包：`nix profile install [package]`
+* 列出已安装的：`nix profile list`
