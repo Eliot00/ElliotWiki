@@ -1,0 +1,8 @@
+created: 20230302022614034
+modified: 20230302022714014
+tags: Tools
+title: ripgrep查找并替换
+type: text/vnd.tiddlywiki
+
+* with GNU sed: `rg 'foo' --files-with-matches | xargs sed -i 's/foo/bar/g'`
+* with BSD sed: `rg 'foo' --files-with-matches | xargs sed -i '' 's/foo/bar/g'`
