@@ -1,7 +1,10 @@
 created: 20230226061433994
-modified: 20230226061706897
-tags: IME
+modified: 20230302082042402
+tags: IME Pending
 title: 输入法资料整理
 type: text/vnd.tiddlywiki
 
 * [[关于LSP补全的讨论|https://emacs-china.org/t/lsp/22203/28]]
+* [[基于HMM的拼音输入法|https://zhuanlan.zhihu.com/p/508599305]]
+* [[一个Python实现|https://github.com/LiuRoy/Pinyin_Demo]]
+* [[ 一文搞懂HMM（隐马尔可夫模型）|https://www.cnblogs.com/skyme/p/4651331.html]]
