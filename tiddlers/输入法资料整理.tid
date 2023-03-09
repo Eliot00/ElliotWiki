@@ -1,5 +1,5 @@
 created: 20230226061433994
-modified: 20230305052009021
+modified: 20230309140132370
 tags: IME Pending
 title: 输入法资料整理
 type: text/vnd.tiddlywiki
@@ -10,3 +10,4 @@ type: text/vnd.tiddlywiki
 * [[ 一文搞懂HMM（隐马尔可夫模型）|https://www.cnblogs.com/skyme/p/4651331.html]]
 * [[土制拼音|https://pwe.cat/pinyin-ime/]]
 * [[搜喵输入法|http://www.crownpku.com/2017/09/10/%E6%90%9C%E5%96%B5%E8%BE%93%E5%85%A5%E6%B3%95-%E7%94%A8seq2seq%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95.html]]
+* [[seq2seq纠错|http://media.people.com.cn/n1/2017/0112/c409703-29018801.html]]
