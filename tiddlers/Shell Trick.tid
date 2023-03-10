@@ -1,0 +1,11 @@
+created: 20230310020600730
+modified: 20230310020949293
+tags: Linux shell Tools
+title: Shell Trick
+type: text/vnd.tiddlywiki
+
+!! 对比文件并统计行数
+`diff -U 0 file1 file2 | grep ^@ | wc -l`
+
+!! ripgrep结合sed查找替换
+[[ripgrep查找并替换]]
