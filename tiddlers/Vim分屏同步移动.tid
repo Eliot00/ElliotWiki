@@ -1,7 +1,9 @@
 created: 20210429021724824
-modified: 20210429021845460
+modified: 20230411022016721
 tags: Vim
 title: Vim分屏同步移动
 type: text/vnd.tiddlywiki
+
+[[Vim分屏]]
 
 同步`:set scb`，要取消就使用`:set scb!`。scb是scrollbind 的简写

@@ -1,0 +1,11 @@
+created: 20230411021657389
+modified: 20230411021939613
+tags: Vim
+title: Vim分屏
+type: text/vnd.tiddlywiki
+
+[[Vim]]
+
+* `:split +10` 分屏并定位到当前文件的第10行
+* `:split +` 分屏并定位到当前文件最后一行
+* `:vsplit +/pattern` 垂直分屏并定位到匹配的pattern上
