@@ -1,0 +1,33 @@
+created: 20230613041855580
+modified: 20230613041934356
+tags: Tools Git
+title: git-stash用法
+type: text/markdown
+
+1.  stash缓存
+    -   `git stash` 保存未提交的修改
+    -   `git stash save "message"` 保存并加上message
+2.  应用stash
+    -   `git stash pop` 弹出当前stash堆栈中的第一个并应用
+    -   `git stash apply` 应用但不会删除stash栈顶
+3.  查看
+    -   `git stash list` 列出所有
+    -   `git stash show` 查看文件修改
+    -   `git stash show -p` 查看具体diff
+4.  移除
+    -   `git stash drop` 删除栈顶
+    -   `git stash clear` 删除全部
+5.  从stash创建分支： `git stash branch <brancname>`
+
+默认情况下，git stash会缓存下列文件：
+
+-   添加到暂存区的修改（staged changes）
+-   Git跟踪的但并未添加到暂存区的修改（unstaged changes）
+
+但不会缓存一下文件：
+
+-   在工作目录中新的文件（untracked files）
+-   被忽略的文件（ignored files）
+
+`git stash` 命令提供了参数用于缓存上面两种类型的文件。使用 `-u` 或者 `--include-untracked` 可以stash untracked文件。使用 `-a` 或者 `--all` 命令可以stash当前目录下的所有修改。
+
